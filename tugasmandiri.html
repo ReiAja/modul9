@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Nama Siswa RPL</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin-top: 10px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Data Nama Siswa RPL</h1>
+    <h3>SMK Negeri 4 Malang</h3>
+
+    <table id="tabelSiswa">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>NIS</th>
+                <th>Nama Siswa</th>
+                <th>Kelas</th>
+            </tr>
+        </thead>
+        <tbody id="isiTabel">
+            </tbody>
+    </table>
+
+    <script>
+        // 1. Array of Objects (Data Siswa)
+        const siswa = [
+            { nis: "1001", nama: "Andi", kelas: "X RPL A" },
+            { nis: "1002", nama: "Budi", kelas: "X RPL B" },
+            { nis: "1003", nama: "Citra", kelas: "X RPL C" },
+            { nis: "1004", nama: "Dewi", kelas: "XI RPL A" }
+        ];
+
+        // 2. DOM Selection (Memilih elemen tempat data akan ditampilkan)
+        const tbody = document.getElementById("isiTabel");
+
+        // 3. Looping forEach untuk memasukkan data ke dalam DOM
+        siswa.forEach((item, index) => {
+            // Membuat elemen baris (tr)
+            let row = document.createElement("tr");
+
+            // Mengisi baris dengan kolom (td)
+            row.innerHTML = `
+                <td>${index + 1}</td>
+                <td>${item.nis}</td>
+                <td>${item.nama}</td>
+                <td>${item.kelas}</td>
+            `;
+
+            // Menambahkan baris ke dalam tbody
+            tbody.appendChild(row);
+        });
+    </script>
+
+</body>
+</html>

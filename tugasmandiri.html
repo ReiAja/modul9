@@ -7,8 +7,8 @@
     <style>
         table {
             border-collapse: collapse;
-            width: 50%;
-            margin-top: 10px;
+            width: 60%;
+            margin-bottom: 30px;
         }
         table, th, td {
             border: 1px solid black;
@@ -20,6 +20,9 @@
         th {
             background-color: #f2f2f2;
         }
+        h2 {
+            color: #2c3e50;
+        }
     </style>
 </head>
 <body>
@@ -27,7 +30,8 @@
     <h1>Data Nama Siswa RPL</h1>
     <h3>SMK Negeri 4 Malang</h3>
 
-    <table id="tabelSiswa">
+    <!-- Versi For -->
+    <table>
         <thead>
             <tr>
                 <th>No</th>
@@ -36,12 +40,23 @@
                 <th>Kelas</th>
             </tr>
         </thead>
-        <tbody id="isiTabel">
-            </tbody>
+        <tbody id="isiTabelFor"></tbody>
+    </table>
+
+    <!-- Versi ForEach -->
+    <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>NIS</th>
+                <th>Nama Siswa</th>
+                <th>Kelas</th>
+            </tr>
+        </thead>
+        <tbody id="isiTabelForEach"></tbody>
     </table>
 
     <script>
-        // 1. Array of Objects (Data Siswa)
         const siswa = [
             { nis: "1001", nama: "Andi", kelas: "X RPL A" },
             { nis: "1002", nama: "Budi", kelas: "X RPL B" },
@@ -49,24 +64,33 @@
             { nis: "1004", nama: "Dewi", kelas: "XI RPL A" }
         ];
 
-        // 2. DOM Selection (Memilih elemen tempat data akan ditampilkan)
-        const tbody = document.getElementById("isiTabel");
-
-        // 3. Looping forEach untuk memasukkan data ke dalam DOM
-        siswa.forEach((item, index) => {
-            // Membuat elemen baris (tr)
+        // --- BAGIAN FOR LOOP (Sembunyikan data ke-4) ---
+        const tbodyFor = document.getElementById("isiTabelFor");
+        // i < 3 artinya hanya mengambil index 0, 1, dan 2
+        for (let i = 0; i < 3; i++) {
+            let item = siswa[i];
             let row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${i + 1}</td>
+                <td>${item.nis}</td>
+                <td>${item.nama}</td>
+                <td>${item.kelas}</td>
+            `;
+            tbodyFor.appendChild(row);
+        }
 
-            // Mengisi baris dengan kolom (td)
+        // --- BAGIAN FOREACH (Menampilkan Semua) ---
+        const tbodyForEach = document.getElementById("isiTabelForEach");
+
+        siswa.forEach((item, index) => {
+            let row = document.createElement("tr");
             row.innerHTML = `
                 <td>${index + 1}</td>
                 <td>${item.nis}</td>
                 <td>${item.nama}</td>
                 <td>${item.kelas}</td>
             `;
-
-            // Menambahkan baris ke dalam tbody
-            tbody.appendChild(row);
+            tbodyForEach.appendChild(row); 
         });
     </script>
 

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Versi DOM Loop</title>
+    <style>
+        table { border-collapse: collapse; width: 50%; }
+        table, th, td { border: 1px solid black; padding: 8px; }
+    </style>
+</head>
+<body>
+    <h2>Data Siswa (Metode DOM Loop)</h2>
+    <table>
+        <thead>
+            <tr><th>No</th><th>NIS</th><th>Nama</th><th>Kelas</th></tr>
+        </thead>
+        <tbody id="isiTabel"></tbody>
+    </table>
+
+    <script>
+        const siswa = [
+            { nis: "1001", nama: "Andi", kelas: "X RPL A" },
+            { nis: "1002", nama: "Budi", kelas: "X RPL B" },
+            { nis: "1003", nama: "Citra", kelas: "X RPL C" },
+            { nis: "1004", nama: "Dewi", kelas: "XI RPL A" }
+        ];
+
+        const tbody = document.getElementById("isiTabel");
+        let nomor = 1;
+
+        // Menggunakan for...of loop
+        for (const s of siswa) {
+            // Berhenti jika sudah mencapai baris ke-4
+            if (nomor > 3) break;
+
+            let tr = document.createElement("tr");
+            tr.innerHTML = `
+                <td>${nomor}</td>
+                <td>${s.nis}</td>
+                <td>${s.nama}</td>
+                <td>${s.kelas}</td>
+            `;
+            tbody.appendChild(tr);
+            nomor++;
+        }
+    </script>
+</body>
+</html>

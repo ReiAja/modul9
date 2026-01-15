@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Versi ForEach</title>
+    <style>
+        table { border-collapse: collapse; width: 50%; }
+        table, th, td { border: 1px solid black; padding: 8px; }
+    </style>
+</head>
+<body>
+    <h2>Data Siswa (Metode ForEach)</h2>
+    <table>
+        <thead>
+            <tr><th>No</th><th>NIS</th><th>Nama</th><th>Kelas</th></tr>
+        </thead>
+        <tbody id="isiTabel"></tbody>
+    </table>
+
+    <script>
+        const siswa = [
+            { nis: "1001", nama: "Andi", kelas: "X RPL A" },
+            { nis: "1002", nama: "Budi", kelas: "X RPL B" },
+            { nis: "1003", nama: "Citra", kelas: "X RPL C" },
+            { nis: "1004", nama: "Dewi", kelas: "XI RPL A" }
+        ];
+
+        const tbody = document.getElementById("isiTabel");
+
+        siswa.forEach((item, index) => {
+            if (index < 4) {
+                let row = `<tr>
+                    <td>${index + 1}</td>
+                    <td>${item.nis}</td>
+                    <td>${item.nama}</td>
+                    <td>${item.kelas}</td>
+                </tr>`;
+                tbody.innerHTML += row;
+            }
+        });
+    </script>
+</body>
+</html>

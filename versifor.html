@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Versi FOR</title>
+    <style>
+        table { border-collapse: collapse; width: 50%; }
+        table, th, td { border: 1px solid black; padding: 8px; }
+    </style>
+</head>
+<body>
+    <h2>Data Siswa (Metode FOR)</h2>
+    <table>
+        <thead>
+            <tr><th>No</th><th>NIS</th><th>Nama</th><th>Kelas</th></tr>
+        </thead>
+        <tbody id="isiTabel"></tbody>
+    </table>
+
+    <script>
+        const siswa = [
+            { nis: "1001", nama: "Andi", kelas: "X RPL A" },
+            { nis: "1002", nama: "Budi", kelas: "X RPL B" },
+            { nis: "1003", nama: "Citra", kelas: "X RPL C" },
+            { nis: "1004", nama: "Dewi", kelas: "XI RPL A" }
+        ];
+
+        const tbody = document.getElementById("isiTabel");
+
+        // Loop dibatasi sampai index kurang dari 3
+        for (let i = 0; i < 3; i++) {
+            let row = `<tr>
+                <td>${i + 1}</td>
+                <td>${siswa[i].nis}</td>
+                <td>${siswa[i].nama}</td>
+                <td>${siswa[i].kelas}</td>
+            </tr>`;
+            tbody.innerHTML += row;
+        }
+    </script>
+</body>
+</html>
